@@ -10,11 +10,6 @@ echo "TTT - $(date)"
 # Clean the environment
 module purge
 
-# Required modules
-<%- unless context.cuda_version.empty? || context.cuda_version == 'none' -%>
-module load <%= context.cuda_version %>
-<%- end -%>
-
 # Set working directory to notebook root directory
 cd "${NOTEBOOK_ROOT}"
 
