@@ -16,6 +16,22 @@ cd "${NOTEBOOK_ROOT}"
 # Setup Jupyter environment
 module load project/ondemand app_jupyter/<%= context.jupyter_version %>
 module load ollama/0.13.1
+
+# set up ollama_models directory
+OLLAMA_MODELS_OLD="$OLLAMA_MODELS"
+OLLAMA_MODELS_TMP=<%= context.ollama_models %>
+echo "OLLAMA_MODELS" "$OLLAMA_MODELS_TMP"
+
+mkdir -p "$OLLAMA_MODELS_TMP"
+
+if [ -w "$OLLAMA_MODELS_TMP" ] ; then
+  export OLLAMA_MODELS="$OLLAMA_MODELS_TMP"
+  echo "OLLAMA chose selected model directory"
+else
+  export OLLAMA_MODELS="$OLLAMA_MODELS_OLD"
+  echo "OLLAMA chose default public model directory"
+fi
+
 source ollama_start_helper 
 
 module list
