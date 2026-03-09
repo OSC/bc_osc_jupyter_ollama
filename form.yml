@@ -5,6 +5,7 @@ form:
   - auto_accounts
   - mode
   - working_dir
+  - ollama_models
   - bc_num_hours
   - node_type
   - gpus
@@ -30,6 +31,12 @@ attributes:
     show_hidden: false
     show_files: false   # Only display directories
     help: "Select your project directory; defaults to $HOME"
+  ollama_models:
+    widget: "path_selector"
+    label: "Ollama Models Directory"
+    show_hidden: false
+    show_files: false
+    help: "Select where to read/write models; Defaults to the unwritable public central model directory"
   num_cores:
     widget: "number_field"
     label: "Number of cores"
