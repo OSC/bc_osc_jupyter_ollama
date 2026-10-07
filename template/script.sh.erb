@@ -14,8 +14,8 @@ module purge
 cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
-module load project/ondemand app_jupyter/<%= context.jupyter_version %>
-module load ollama/0.13.1
+module load project/ondemand <%= context.auto_modules_app_jupyter %>
+module load <%= context.auto_modules_ollama %>
 
 # set up ollama_models directory
 OLLAMA_MODELS_OLD="$OLLAMA_MODELS"
